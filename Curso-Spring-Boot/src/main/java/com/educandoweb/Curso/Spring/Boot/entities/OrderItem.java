@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.educandoweb.Curso.Spring.Boot.entities.pk.OrderItemPk;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -17,7 +18,7 @@ public class OrderItem implements Serializable {
 	//indentificador correspondente a chave primaria
 	
 	@EmbeddedId
-	private OrderItemPk id;
+	private OrderItemPk id= new OrderItemPk();
 	
 	private Integer quantity;
 	private Double price;
@@ -55,6 +56,7 @@ public class OrderItem implements Serializable {
 	}
 	
 	//order
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
